@@ -1,16 +1,11 @@
 {
   "name": "a-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "一款模拟安卓选择的picker选择器，适配移动端和pc端",
-  "main": "dist/zc-picker.ssr.js",
-  "browser": "dist/zc-picker.esm.js",
-  "module": "dist/zc-picker.esm.js",
-  "unpkg": "dist/zc-picker.min.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sweetwisdom/zc-picker"
-  },
-  "homepage": "https://github.com/sweetwisdom/zc-picker",
+  "main": "dist/a-picker.ssr.js",
+  "browser": "dist/a-picker.esm.js",
+  "module": "dist/a-picker.esm.js",
+  "unpkg": "dist/a-picker.min.js",
   "keywords": [
     "picker",
     "vue",
@@ -64,6 +59,12 @@
     "node": ">=12"
   }
 }
+
+
+
+
+
+
 
 
 

@@ -1,11 +1,13 @@
 <script>
 import Vue from "vue";
-import ZcPicker from "@/zc-picker.vue";
+import ZcPicker from "@/a-picker.vue";
+import APicker from "../src/a-picker.vue";
 
 export default Vue.extend({
   name: "ServeDev",
   components: {
-    ZcPicker,
+    ZcPicker
+    APicker,
   },
   data() {
     return {
@@ -44,6 +46,7 @@ export default Vue.extend({
 
 <template>
   <div id="app">
+    <a-picker   > </a-picker>
     <button @click="show = true">开始选中</button>
     <button @click="picker2.show = true">自定义{{ picker2.select }}</button>
     <p><span>选中的值：</span> {{ select }}</p>

@@ -22,7 +22,7 @@
 
 
 ```shell
-npm i zc-picker
+npm i a-picker
 ```
 
 

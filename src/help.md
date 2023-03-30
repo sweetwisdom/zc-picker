@@ -1,4 +1,4 @@
-# zc-picker
+# a-picker
 
 一款模拟安卓选择的picker选择器，适配移动端和pc端，可进行触摸操作。
 
