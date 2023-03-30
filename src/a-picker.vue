@@ -47,6 +47,7 @@ const COMPONENT_NAME = "a-picker";
 const EVENT_SELECT = "select";
 const EVENT_CANCEL = "cancel";
 const EVENT_CHANGE = "change";
+let hasInit = false;
 
 export default {
   name: COMPONENT_NAME,
@@ -108,6 +109,7 @@ export default {
   },
   computed: {
     isCustom() {
+      console.log("1111", this.type, "this.type");
       return this.type == "custom";
     },
     title() {
@@ -131,7 +133,7 @@ export default {
       return this.pickerData
         .map((data, i) => {
           const index = currentSelectedIndexPair[i];
-          if(!data[index]) return ''
+          if (!data[index]) return "";
           return `${data[index].label}`;
         })
         .join("-");
@@ -151,6 +153,7 @@ export default {
         .map((data, i) => {
           const index = currentSelectedIndexPair[i];
           const label = data[index].label;
+          if (this.isCustom) return label;
 
           return label > 9 ? label : `0${label}`;
         })
@@ -188,9 +191,12 @@ export default {
             this._createWheel(wheelWrapper, i);
           }
           this.initFirst();
+          this.getCurrenrSelected();
 
           // 根据 selectedText 设置初始位置
         });
+      } else {
+        this.initFirst();
       }
     },
     hide() {
@@ -203,8 +209,12 @@ export default {
         const index = data.findIndex((item) => item.label == selectedTextArr[i]);
         this.wheels[i].wheelTo(index);
       });
+      this.$nextTick(() => {
+        hasInit = true;
+      });
     },
     _createWheel(wheelWrapper, i) {
+      const wheels = this.wheels;
       if (!this.wheels[i]) {
         this.wheels[i] = new BScroll(wheelWrapper.children[i], {
           wheel: {
@@ -215,20 +225,13 @@ export default {
           probeType: 3,
         });
         this.wheels[i].on("scrollEnd", () => {
-          this.$emit(EVENT_CHANGE, i, this.wheels[i].getSelectedIndex());
-          this.temSelectedText = this.getCurrenrSelected();
-            // console.log("滚动了🤖", this.temSelectedText, i, this.wheels.length);
-
-          if (i < this.wheels.length - 1) {
-            // 先刷新
-            this.wheels[i + 1].refresh();
-            this.wheels[i + 2] && this.wheels[i + 2].refresh();
-            // 再滚动
-            setTimeout(() => {
-              this.wheels[i + 1].wheelTo(0);
-              this.wheels[i + 2] && this.wheels[i + 2].wheelTo(0);
-            }, 10);
-          }
+          if (!hasInit) return;
+        
+          let prevSelectedIndexPair = this.selectedIndexPair;
+          const currentSelectedIndexPair = wheels.map((wheel) => wheel.getSelectedIndex());
+         
+          this._loadPickerData(currentSelectedIndexPair, prevSelectedIndexPair);
+         
         });
         // 监听滚动状态
       } else {
@@ -236,6 +239,26 @@ export default {
       }
 
       return this.wheels[i];
+    },
+    _loadPickerData(newIndexPair, oldIndexPair) {
+      // 监听滚动的序列
+      const wheels = this.wheels;
+      const maxLen = Math.max(newIndexPair.length, oldIndexPair.length);
+      for (let i = 0; i < maxLen; i++) {
+        if (newIndexPair[i] !== oldIndexPair[i]) {
+          console.log(i, "滚动了");
+          //    将后面的数据依次置为0
+          for (let j = i + 1; j < newIndexPair.length; j++) {
+            newIndexPair[j] = 0;
+            // console.log(j, "置为0");
+            this.temSelectedText = this.getCurrenrSelected();
+            this.$nextTick(() => {
+              wheels[j].refresh();
+            });
+          }
+          break;
+        }
+      }
     },
   },
 };

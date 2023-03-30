@@ -46,19 +46,19 @@ export function generateTimeOptions(type, range, select) {
   }
   //   console.log(startDay, endDay, "最大最小日期");
 
-  for (let i = startMonth - 0; i <= 12 - 0; i++) {
+  for (let i = 1; i <= 12; i++) {
     monthOptions.push({
       label: i,
       value: i,
-      disabled: i > endMonth,
+      disabled: i > endMonth || i < startMonth,
     });
   }
 
-  for (let i = startDay - 0; i <= 31 - 0; i++) {
+  for (let i = 1; i <= 31; i++) {
     dayOptions.push({
       label: i,
       value: i,
-      disabled: i > endDay,
+      disabled: i > endDay || i < startDay,
     });
   }
   switch (type) {

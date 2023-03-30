@@ -1,13 +1,13 @@
 <script>
 import Vue from "vue";
 import ZcPicker from "@/a-picker.vue";
-import APicker from "../src/a-picker.vue";
+
 
 export default Vue.extend({
   name: "ServeDev",
   components: {
     ZcPicker
-    APicker,
+  
   },
   data() {
     return {
@@ -16,8 +16,8 @@ export default Vue.extend({
       range: ["2020-03-12", "2023-6-20"],
       options: [
         [
-          { label: "湖北省", value: 0 },
-          { label: "湖南省", value: 1 },
+          { label: "湖北省", value: 42 },
+          { label: "湖南省", value: 43 },
           { label: "广东省", value: 2, disabled: 1 },
           { label: "广西省", value: 3 },
           { label: "江西省", value: 4 },
@@ -46,12 +46,12 @@ export default Vue.extend({
 
 <template>
   <div id="app">
-    <a-picker   > </a-picker>
+   
     <button @click="show = true">开始选中</button>
     <button @click="picker2.show = true">自定义{{ picker2.select }}</button>
     <p><span>选中的值：</span> {{ select }}</p>
-    <zc-picker v-model="picker2.select" type="picker2.type" :options="options" :visiable.sync="picker2.show" />
-    <zc-picker v-model="select" type="date" @select="handle" :range="range" :visiable.sync="show" />
+    <zc-picker v-model="picker2.select" :type="picker2.type" :options="options" @select="handle" :visiable.sync="picker2.show" />
+    <zc-picker v-model="select" type="date" @select="handle" :range="range" :visiable.sync="show"  />
   </div>
 </template>
 
