@@ -30,8 +30,8 @@ npm i zc-picker
 ## 使用
 
 ```js
-import ZcPicker from "zc-picker";
-Vue.use(ZcPicker);
+import APicker from "a-picker";
+Vue.use(APicker);
 
 
 ```

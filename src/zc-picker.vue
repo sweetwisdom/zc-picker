@@ -43,7 +43,7 @@ BScroll.use(Wheel);
 const STATE_HIDE = 0;
 const STATE_SHOW = 1;
 
-const COMPONENT_NAME = "ZcPicker";
+const COMPONENT_NAME = "a-picker";
 const EVENT_SELECT = "select";
 const EVENT_CANCEL = "cancel";
 const EVENT_CHANGE = "change";

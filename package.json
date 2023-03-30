@@ -1,6 +1,6 @@
 {
-  "name": "zc-picker",
-  "version": "1.0.1",
+  "name": "a-picker",
+  "version": "1.0.2",
   "description": "一款模拟安卓选择的picker选择器，适配移动端和pc端",
   "main": "dist/zc-picker.ssr.js",
   "browser": "dist/zc-picker.esm.js",
@@ -32,10 +32,10 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "vetur": {
-    "tags": "config outDir/tags.json",
-    "attributes": "config outDir/attributes.json"
+    "tags": "dist/tags.json",
+    "attributes": "dist/attributes.json"
   },
-  "web-types": "config outDir/web-types.json",
+  "web-types": "dist/web-types.json",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -64,6 +64,10 @@
     "node": ">=12"
   }
 }
+
+
+
+
 
 
 
