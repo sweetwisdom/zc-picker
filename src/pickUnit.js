@@ -44,7 +44,7 @@ export function generateTimeOptions(type, range, select) {
   } else {
     startDay = 1;
   }
-  console.log(startDay, endDay, "最大最小日期");
+  //   console.log(startDay, endDay, "最大最小日期");
 
   for (let i = startMonth - 0; i <= 12 - 0; i++) {
     monthOptions.push({

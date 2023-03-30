@@ -217,7 +217,7 @@ export default {
         this.wheels[i].on("scrollEnd", () => {
           this.$emit(EVENT_CHANGE, i, this.wheels[i].getSelectedIndex());
           this.temSelectedText = this.getCurrenrSelected();
-            console.log("滚动了🤖", this.temSelectedText, i, this.wheels.length);
+            // console.log("滚动了🤖", this.temSelectedText, i, this.wheels.length);
 
           if (i < this.wheels.length - 1) {
             // 先刷新

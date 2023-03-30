@@ -1,6 +1,6 @@
 # a-picker
 
-一款模拟安卓选择的picker选择器，适配移动端和pc端，可进行触摸操作。
+一款模拟安卓选择的picker选择器，适配移动端和pc端，可进行触摸操作。</n> powerby sweetwisdom@qq.com
 
 <!-- The first content similar to the above structure will be the name and description information of the current component -->
 
