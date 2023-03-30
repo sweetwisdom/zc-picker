@@ -34,6 +34,11 @@ export default Vue.extend({
       },
     };
   },
+  methods: {
+    handle(a,b) {
+      console.log("选中了",a,b);
+    },
+  },
 });
 </script>
 
@@ -43,7 +48,7 @@ export default Vue.extend({
     <button @click="picker2.show = true">自定义{{ picker2.select }}</button>
     <p><span>选中的值：</span> {{ select }}</p>
     <zc-picker v-model="picker2.select" type="picker2.type" :options="options" :visiable.sync="picker2.show" />
-    <zc-picker v-model="select" type="month" :range="range" :visiable.sync="show" />
+    <zc-picker v-model="select" type="month" @select="handle" :range="range" :visiable.sync="show" />
   </div>
 </template>
 

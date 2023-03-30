@@ -4,6 +4,9 @@
 
 ![image-20230330102527456](https://gitee.com/ponyjie/mySou/raw/master/2023/03/upgit_20230330_1680152262.png)
 
+
+[demo展示案例](https://codepen.io/sweetwisdom/pen/yLxWLLR)
+
 ## 主要功能
 
 ✅年份选择
