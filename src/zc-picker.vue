@@ -131,8 +131,8 @@ export default {
       return this.pickerData
         .map((data, i) => {
           const index = currentSelectedIndexPair[i];
-
-          return `${data[index]?.label}`;
+          if(!data[index]) return ''
+          return `${data[index].label}`;
         })
         .join("-");
     },
@@ -150,8 +150,9 @@ export default {
       this.selectedText = this.pickerData
         .map((data, i) => {
           const index = currentSelectedIndexPair[i];
+          const label = data[index].label;
 
-          return `${data[index].label}`;
+          return label > 9 ? label : `0${label}`;
         })
         .join("-");
       // 赋值
@@ -216,10 +217,17 @@ export default {
         this.wheels[i].on("scrollEnd", () => {
           this.$emit(EVENT_CHANGE, i, this.wheels[i].getSelectedIndex());
           this.temSelectedText = this.getCurrenrSelected();
-          //   console.log("滚动了🤖", this.temSelectedText, i, this.wheels.length);
+            console.log("滚动了🤖", this.temSelectedText, i, this.wheels.length);
 
           if (i < this.wheels.length - 1) {
-            this.wheels[i + 1].wheelTo(0);
+            // 先刷新
+            this.wheels[i + 1].refresh();
+            this.wheels[i + 2] && this.wheels[i + 2].refresh();
+            // 再滚动
+            setTimeout(() => {
+              this.wheels[i + 1].wheelTo(0);
+              this.wheels[i + 2] && this.wheels[i + 2].wheelTo(0);
+            }, 10);
           }
         });
         // 监听滚动状态
@@ -455,4 +463,3 @@ ul {
   font-weight: bold;
 }
 </style>
-
