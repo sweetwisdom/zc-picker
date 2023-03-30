@@ -1,6 +1,6 @@
 {
   "name": "zc-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "一款模拟安卓选择的picker选择器，适配移动端和pc端",
   "main": "dist/zc-picker.ssr.js",
   "browser": "dist/zc-picker.esm.js",
@@ -8,8 +8,7 @@
   "unpkg": "dist/zc-picker.min.js",
   "files": [
     "dist/*",
-    "src/*",
-    ".imgs/*"
+    "src/*"
   ],
   "sideEffects": false,
   "scripts": {
@@ -21,8 +20,8 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
-    "@better-scroll/core": "^2.5.0",
-    "@better-scroll/wheel": "^2.5.0"
+    "@better-scroll/core": "~2.5.0",
+    "@better-scroll/wheel": "~2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -50,6 +49,15 @@
     "node": ">=12"
   }
 }
+
+
+
+
+
+
+
+
+
 
 
 

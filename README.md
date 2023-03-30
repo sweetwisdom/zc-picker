@@ -2,7 +2,7 @@
 
 一款模拟安卓选择的picker选择器，适配移动端和pc端，可进行触摸操作。
 
-![image-20230330102527456](./.imgs/image-20230330102527456.png)
+![image-20230330102527456](https://gitee.com/ponyjie/mySou/raw/master/2023/03/upgit_20230330_1680152262.png)
 
 ## 主要功能
 
@@ -51,7 +51,7 @@ Vue.use(ZcPicker);
 
 ## 参数说明
 
-![image-20230330111200909](./.imgs/image-20230330111200909.png)
+![image-20230330111200909](https://gitee.com/ponyjie/mySou/raw/master/2023/03/upgit_20230330_1680152268.png)
 
 ### Attributes
 
