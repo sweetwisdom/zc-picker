@@ -342,7 +342,7 @@ ul {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100;
+
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -392,13 +392,13 @@ ul {
 }
 .picker .picker-panel .picker-choose {
   position: relative;
-  height: 40px;
+  height: 60px;
   color: #fff;
   background-color: #0575f2;
 }
 .picker .picker-panel .picker-choose .picker-title {
   margin: 0;
-  line-height: 40px;
+  line-height: 60px;
   font-weight: normal;
   text-align: center;
   font-size: 18px;
