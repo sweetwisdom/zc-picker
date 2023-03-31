@@ -1,38 +1,36 @@
 <template>
-  <div class="container">
-    <transition name="picker-fade">
-      <div class="picker" v-show="state === 1" @touchmove.prevent @click="_cancel">
-        <transition name="picker-move">
-          <div class="picker-panel" v-show="state === 1" @click.stop>
-            <div class="picker-choose border-bottom-1px">
-              <!-- <span class="cancel" @click="_cancel">Cancel</span>
+  <transition name="picker-fade">
+    <div class="picker" v-show="state === 1" @touchmove.prevent @click="_cancel">
+      <transition name="picker-move">
+        <div class="picker-panel" v-show="state === 1" @click.stop>
+          <div class="picker-choose border-bottom-1px">
+            <!-- <span class="cancel" @click="_cancel">Cancel</span>
               <span class="confirm" @click="_confirm">Confirm</span> -->
-              <h1 class="picker-title">{{ title }}</h1>
-            </div>
-            <div class="picker-content">
-              <div class="mask-top border-bottom-1px"></div>
-              <div class="mask-bottom border-top-1px"></div>
-              <div class="wheel-wrapper" ref="wheelWrapper">
-                <div class="wheel" v-for="(data, index) in pickerData" :key="index">
-                  <ul class="wheel-scroll">
-                    <li v-for="item in data" :key="item.value" :class="{ 'wheel-disabled-item': item.disabled }" class="wheel-item">
-                      {{ item.label }}
-                      <!-- <span v-if="!isCustom">{{ spiltText[index] }}</span> -->
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="picker-footer">
-              <div>
-                <span class="confirmText" @click="_confirm">确定</span>
+            <h1 class="picker-title">{{ title }}</h1>
+          </div>
+          <div class="picker-content">
+            <div class="mask-top border-bottom-1px"></div>
+            <div class="mask-bottom border-top-1px"></div>
+            <div class="wheel-wrapper" ref="wheelWrapper">
+              <div class="wheel" v-for="(data, index) in pickerData" :key="index">
+                <ul class="wheel-scroll">
+                  <li v-for="item in data" :key="item.value" :class="{ 'wheel-disabled-item': item.disabled }" class="wheel-item">
+                    {{ item.label }}
+                    <span v-if="!isCustom">{{ spiltText[index] }}</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-        </transition>
-      </div>
-    </transition>
-  </div>
+          <div class="picker-footer">
+            <div>
+              <span class="confirmText" @click="_confirm">确定</span>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -47,7 +45,6 @@ const COMPONENT_NAME = "a-picker";
 const EVENT_SELECT = "select";
 const EVENT_CANCEL = "cancel";
 const EVENT_CHANGE = "change";
-let hasInit = false;
 
 export default {
   name: COMPONENT_NAME,
@@ -130,6 +127,7 @@ export default {
       const currentSelectedIndexPair = (this.selectedIndexPair = this.wheels.map((wheel) => {
         return wheel.getSelectedIndex();
       }));
+
       return this.pickerData
         .map((data, i) => {
           const index = currentSelectedIndexPair[i];
@@ -209,9 +207,6 @@ export default {
         const index = data.findIndex((item) => item.label == selectedTextArr[i]);
         this.wheels[i].wheelTo(index);
       });
-      this.$nextTick(() => {
-        hasInit = true;
-      });
     },
     _createWheel(wheelWrapper, i) {
       const wheels = this.wheels;
@@ -225,13 +220,10 @@ export default {
           probeType: 3,
         });
         this.wheels[i].on("scrollEnd", () => {
-          if (!hasInit) return;
-        
           let prevSelectedIndexPair = this.selectedIndexPair;
           const currentSelectedIndexPair = wheels.map((wheel) => wheel.getSelectedIndex());
-         
+
           this._loadPickerData(currentSelectedIndexPair, prevSelectedIndexPair);
-         
         });
         // 监听滚动状态
       } else {
@@ -246,7 +238,7 @@ export default {
       const maxLen = Math.max(newIndexPair.length, oldIndexPair.length);
       for (let i = 0; i < maxLen; i++) {
         if (newIndexPair[i] !== oldIndexPair[i]) {
-          console.log(i, "滚动了");
+        //   console.log(i, "滚动了");
           //    将后面的数据依次置为0
           for (let j = i + 1; j < newIndexPair.length; j++) {
             newIndexPair[j] = 0;
@@ -296,10 +288,10 @@ ul {
   transform-origin: 0 bottom;
 }
 .mask-top.border-bottom-1px:after {
-  border-bottom: 1px solid #e90c2b;
+  border-bottom: 3px solid #e90c2b;
 }
 .border-top-1px:before {
-  border-top: 1px solid #e90c2b;
+  border-top: 3px solid #e90c2b;
   left: 0;
   top: 0;
   width: 100%;
@@ -356,6 +348,7 @@ ul {
   overflow: hidden;
   text-align: center;
   font-size: 14px;
+  z-index: 9999;
   background-color: rgba(37, 38, 45, 0.4);
 }
 .picker.picker-fade-enter,
@@ -408,7 +401,7 @@ ul {
   line-height: 40px;
   font-weight: normal;
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
 }
 .picker .picker-panel .picker-choose .confirm,
 .picker .picker-panel .picker-choose .cancel {

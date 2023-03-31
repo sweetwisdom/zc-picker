@@ -11,9 +11,9 @@ export default Vue.extend({
   },
   data() {
     return {
-      select: "2029-10",
+      select: "2023-02",
       show: false,
-      range: ["2020-03-12", "2023-6-20"],
+      range: ["2020-03-12", "2023-02-20"],
       options: [
         [
           { label: "湖北省", value: 42 },
@@ -51,7 +51,7 @@ export default Vue.extend({
     <button @click="picker2.show = true">自定义{{ picker2.select }}</button>
     <p><span>选中的值：</span> {{ select }}</p>
     <zc-picker v-model="picker2.select" :type="picker2.type" :options="options" @select="handle" :visiable.sync="picker2.show" />
-    <zc-picker v-model="select" type="date" @select="handle" :range="range" :visiable.sync="show"  />
+    <zc-picker v-model="select" type="month" @select="handle" :range="range" :visiable.sync="show"  />
   </div>
 </template>
 
